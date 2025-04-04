@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VioletaApp</string>
+    <string name="web_client_id">329696169523-72dgprbhqbuju0k36ijpoogdar6m6blv.apps.googleusercontent.com</string>
+    <string name="login">Logo da Google com fundo violeta</string>
+    <string name="logo_violeta">Logo do aplicativo Violeta</string>
+    <string name="user">Nome do usuário</string>
+</resources>

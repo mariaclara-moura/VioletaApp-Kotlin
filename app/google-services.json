@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "329696169523",
+    "project_id": "violeta-a25c4",
+    "storage_bucket": "violeta-a25c4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329696169523:android:798486f08bd6505766dd46",
+        "android_client_info": {
+          "package_name": "com.example.violetaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329696169523-k81f3taohs1euqctlddb48gnet5malbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.violetaapp",
+            "certificate_hash": "d47b3ee70fc09e67923a06a2ad14add43f21a8db"
+          }
+        },
+        {
+          "client_id": "329696169523-62pruc0i8161a6vvdia1et7hupsme00u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA303cWKsMFL_YhF-LKL24nnk8weosPWc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329696169523-62pruc0i8161a6vvdia1et7hupsme00u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

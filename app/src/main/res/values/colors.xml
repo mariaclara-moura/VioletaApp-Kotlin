@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="preto">#FF000000</color>
+    <color name="branco">#F4F4F9</color>
+    <color name="violeta">#A97ADB</color>
+    <color name="violeta_400">#553D6E</color>
+    <color name="violeta_300">#A97ADB</color>
+    <color name="violeta_200">#CFB7EA</color>
+    <color name="violeta_100">#E2D6F2</color>
+    <color name="cinza_escuro">#2A2A2A</color>
+    <color name="cinza_claro">#CFD2B2</color>
+</resources>
