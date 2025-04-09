@@ -71,6 +71,20 @@ class PlaceDetailActivity : Activity() {
 
         loadComments()
 
+        // Verificar se o local está favoritado
+        val docId = "${userId}_$placeId"
+        val favoriteRef = db.collection("favorites").document(docId)
+
+        favoriteRef.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                // Já é favorito → coração preenchido
+                btnFavorite.setImageResource(R.drawable.baseline_favorite_24)
+            } else {
+                // Não é favorito → coração não preenchido
+                btnFavorite.setImageResource(R.drawable.baseline_favorite_24_not_filled_24)
+            }
+        }
+
         btnComment.setOnClickListener {
             val text = commentInput.text.toString().trim()
             if (text.isNotEmpty()) {
@@ -102,6 +116,7 @@ class PlaceDetailActivity : Activity() {
                 if (document.exists()) {
                     // Já é favorito → remover
                     favoriteRef.delete().addOnSuccessListener {
+                        btnFavorite.setImageResource(R.drawable.baseline_favorite_24_not_filled_24) // Coração não preenchido
                         Toast.makeText(this, "Removido dos favoritos", Toast.LENGTH_SHORT).show()
                     }
                 } else {
@@ -127,6 +142,7 @@ class PlaceDetailActivity : Activity() {
                     )
 
                     favoriteRef.set(data).addOnSuccessListener {
+                        btnFavorite.setImageResource(R.drawable.baseline_favorite_24) // Coração preenchido
                         Toast.makeText(this, "Adicionado aos favoritos", Toast.LENGTH_SHORT).show()
                     }
                 }

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.violetaapp.PlaceDetailActivity
+import com.example.violetaapp.R
 import com.example.violetaapp.data.Place
 import com.example.violetaapp.databinding.ItemPlaceBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +34,21 @@ class PlaceAdapter(
         holder.binding.placeName.text = place.name
         holder.binding.placeRating.text = "⭐ ${place.rating}"
         holder.binding.placeAddress.text = place.address
+
+        // Inicializar o estado do favorito
+        val docId = "${userId}_${place.id}"
+        val favoriteRef = db.collection("favorites").document(docId)
+
+        // Verificar se o local já está favoritado
+        favoriteRef.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                // Já é favorito → coração preenchido
+                holder.binding.btnFavorite.setImageResource(R.drawable.baseline_favorite_24)
+            } else {
+                // Não é favorito → coração não preenchido
+                holder.binding.btnFavorite.setImageResource(R.drawable.baseline_favorite_24_not_filled_24)
+            }
+        }
 
         // Abrir detalhes
         holder.itemView.setOnClickListener {
@@ -69,6 +85,7 @@ class PlaceAdapter(
                 if (document.exists()) {
                     // Já favoritado → remover
                     favoritesRef.delete().addOnSuccessListener {
+                        holder.binding.btnFavorite.setImageResource(R.drawable.baseline_favorite_24_not_filled_24) // Coração não preenchido
                         Toast.makeText(context, "Removido dos favoritos", Toast.LENGTH_SHORT).show()
                     }
                 } else {
@@ -94,6 +111,7 @@ class PlaceAdapter(
                     )
 
                     favoritesRef.set(data).addOnSuccessListener {
+                        holder.binding.btnFavorite.setImageResource(R.drawable.baseline_favorite_24) // Coração preenchido
                         Toast.makeText(context, "Adicionado aos favoritos", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -102,20 +120,20 @@ class PlaceAdapter(
 
 
         // Comentário fixo (pode ser substituído depois por um diálogo)
-        holder.binding.btnComment.setOnClickListener {
-            val comment = "Lugar top!"
-            val data = hashMapOf(
-                "userId" to userId,
-                "placeId" to place.id,
-                "placeName" to place.name,
-                "comment" to comment,
-                "timestamp" to FieldValue.serverTimestamp()
-            )
-            db.collection("comments").add(data)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Comentário enviado!", Toast.LENGTH_SHORT).show()
-                }
-        }
+//        holder.binding.btnComment.setOnClickListener {
+//            val comment = "Lugar top!"
+//            val data = hashMapOf(
+//                "userId" to userId,
+//                "placeId" to place.id,
+//                "placeName" to place.name,
+//                "comment" to comment,
+//                "timestamp" to FieldValue.serverTimestamp()
+//            )
+//            db.collection("comments").add(data)
+//                .addOnSuccessListener {
+//                    Toast.makeText(context, "Comentário enviado!", Toast.LENGTH_SHORT).show()
+//                }
+//        }
     }
 
     override fun getItemCount(): Int = places.size
