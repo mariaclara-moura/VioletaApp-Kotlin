@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:background="#EADCF8"
+    android:layout_marginBottom="10dp"
+    android:layout_marginHorizontal="4dp"
+    android:clipToPadding="false"
+    android:elevation="2dp"
+    android:gravity="center_vertical"
+    android:shape="rectangle">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:contentDescription="Avatar"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#A67EDC"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuário"
+            android:textStyle="bold"
+            android:textColor="#5E239D"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/commentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comentário do usuário"
+            android:textColor="#444"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/commentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/04/2025 12:00"
+            android:textColor="#888"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+</LinearLayout>

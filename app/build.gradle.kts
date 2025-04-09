@@ -67,4 +67,9 @@ dependencies {
     implementation (libs.androidx.credentials)
     implementation( libs.androidx.credentials.play.services.auth)
     implementation (libs.googleid)
+
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
