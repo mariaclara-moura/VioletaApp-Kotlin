@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F6FC"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- NOME DO LOCAL -->
+        <TextView
+            android:id="@+id/placeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome do local"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#5E239D"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- TIPO -->
+        <TextView
+            android:id="@+id/placeTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo"
+            android:textStyle="italic"
+            android:textColor="#888"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- ENDEREÇO -->
+        <TextView
+            android:id="@+id/placeAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Endereço"
+            android:layout_marginBottom="4dp"/>
+
+        <!-- NOTA -->
+        <TextView
+            android:id="@+id/placeRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⭐ 4.5"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- HORÁRIOS -->
+        <TextView
+            android:id="@+id/placeHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horários de funcionamento"
+            android:lineSpacingExtra="6dp"
+            android:textColor="#444"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- BOTÃO FAVORITO -->
+        <ImageView
+            android:id="@+id/btnFavorite"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/baseline_favorite_24"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="Favoritar"/>
+
+        <!-- TÍTULO COMENTÁRIOS -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Comentários"
+            android:textStyle="bold"
+            android:textColor="#5E239D"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- LISTA DE COMENTÁRIOS -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerComments"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- FORMULÁRIO DE COMENTÁRIO -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="O que você achou desse local?"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/editComment"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:backgroundTint="#A67EDC"
+            android:hint="Escreva aqui seu comentário..."
+            android:gravity="top"
+            android:padding="12dp"
+            android:background="@drawable/ic_launcher_foreground"
+            android:layout_marginBottom="12dp"/>
+
+        <Button
+            android:id="@+id/btnComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comentar"
+            android:backgroundTint="#5E239D"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+</ScrollView>
