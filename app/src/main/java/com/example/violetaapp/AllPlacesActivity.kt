@@ -51,4 +51,8 @@ class AllPlacesActivity : Activity() {
             }
         }
     }
+    override fun onResume() {
+        super.onResume()
+        loadAllPlaces() // Carrega novamente os lugares e atualiza o estado dos favoritos
+    }
 }
