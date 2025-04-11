@@ -1,30 +1,37 @@
 package com.example.violetaapp
 
-import android.app.Activity
+
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.violetaapp.adapter.PlaceAdapter
 import com.example.violetaapp.api.RetrofitClient
+import com.example.violetaapp.databinding.ActivityAllPlacesBinding
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AllPlacesActivity : Activity() {
+class AllPlacesActivity : ComponentActivity() {
 
     private lateinit var adapter: PlaceAdapter
     private lateinit var userId: String
     private lateinit var recyclerView: RecyclerView
+    private lateinit var binding: ActivityAllPlacesBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_places)
+        binding = ActivityAllPlacesBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
         recyclerView = findViewById(R.id.recyclerPlaces)
-
+        binding.buttonBack.setOnClickListener {
+                onBackPressedDispatcher.onBackPressed()
+        }
         setupRecycler()
         loadAllPlaces()
     }
@@ -39,11 +46,8 @@ class AllPlacesActivity : Activity() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val response = RetrofitClient.instance.getPlaces()
-                val filtered = response.filterNot {
-                    it.tipo.equals("Restaurante", ignoreCase = true) ||
-                            it.tipo.equals("Bares e Pubs", ignoreCase = true)
-                }
-                adapter = PlaceAdapter(filtered, userId)
+                val sorted = response.sortedBy { it.name }
+                adapter = PlaceAdapter(sorted, userId)
                 recyclerView.adapter = adapter
             } catch (e: Exception) {
                 e.printStackTrace()

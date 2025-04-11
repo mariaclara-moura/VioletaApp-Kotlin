@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.violetaapp.adapter.PlaceAdapter
 import com.example.violetaapp.data.Place
 import com.example.violetaapp.databinding.ActivityCommunityBinding
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CommunityActivity : Activity() {
@@ -38,6 +40,16 @@ class CommunityActivity : Activity() {
         binding.btnTodosLocais.setOnClickListener {
             startActivity(Intent(this, AllPlacesActivity::class.java))
         }
+        binding.btnOutrosLocais.setOnClickListener {
+            startActivity(Intent(this, OtherPlacesActivity::class.java))
+        }
+        binding.btnLogout.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(this, MainActivity::class.java) // substitua pelo nome correto da tela de login
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
     }
 
     private fun setupRecycler() {

@@ -15,6 +15,7 @@
         <activity android:name=".CommunityActivity"/>
         <activity android:name=".GastronomyActivity" />
         <activity android:name=".AllPlacesActivity" />
+        <activity android:name=".OtherPlacesActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity
             android:name=".MainActivity"
