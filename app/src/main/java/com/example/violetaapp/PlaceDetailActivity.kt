@@ -7,18 +7,21 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.violetaapp.R
 import com.example.violetaapp.adapter.CommentAdapter
 import com.example.violetaapp.data.Comment
+import com.example.violetaapp.databinding.ActivityAllPlacesBinding
+import com.example.violetaapp.databinding.ActivityPlaceDetailBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class PlaceDetailActivity : Activity() {
+class PlaceDetailActivity : ComponentActivity() {
 
     private lateinit var db: FirebaseFirestore
     private lateinit var commentList: MutableList<Comment>
@@ -26,14 +29,17 @@ class PlaceDetailActivity : Activity() {
     private lateinit var userId: String
     private lateinit var placeId: String
     private lateinit var placeName: String
+    private lateinit var binding: ActivityPlaceDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_place_detail)
-
+        binding = ActivityPlaceDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         db = FirebaseFirestore.getInstance()
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-
+        binding.buttonBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
         // Dados recebidos
         placeName = intent.getStringExtra("name") ?: "Sem nome"
         placeId = intent.getStringExtra("id") ?: ""
